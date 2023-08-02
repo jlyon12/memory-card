@@ -1,6 +1,6 @@
 function Header() {
 	return (
-		<header className="flex justify-between items-center bg-gray-500 text-white p-4">
+		<header className="flex justify-between items-center bg-gray-900 text-white p-4">
 			<h1 className="font-bold text-xl">Memory Game</h1>
 			<div className="flex flex-col items-end space-x-2">
 				<p>
