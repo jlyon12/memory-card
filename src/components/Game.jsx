@@ -1,25 +1,30 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
 
-function Game({ currentScore, setCurrentScore, gameDifficulty }) {
+function Game({
+	setCurrentScore,
+	gameDifficulty,
+	roundNumber,
+	setRoundNumber,
+}) {
 	const [allPokemon, setAllPokemon] = useState([]);
 	const [gameCards, setGameCards] = useState([]);
 	const [numberOfCards, setNumberOfCards] = useState(); //
-
 	const [clickedCards, setClickedCards] = useState([]);
+
 	useEffect(() => {
 		switch (gameDifficulty) {
-			case 0:
-				setNumberOfCards(4);
+			case "easy":
+				numberOfCards === undefined && setNumberOfCards(2);
 				break;
-			case 1:
-				setNumberOfCards(8);
+			case "medium":
+				numberOfCards === undefined && setNumberOfCards(4);
 				break;
-			case 2:
-				setNumberOfCards(12);
+			case "hard":
+				numberOfCards === undefined && setNumberOfCards(6);
 				break;
-			case 3:
-				setNumberOfCards(151);
+			case "trainer":
+				numberOfCards === undefined && setNumberOfCards(151);
 				break;
 		}
 		setGameCards(
@@ -46,6 +51,25 @@ function Game({ currentScore, setCurrentScore, gameDifficulty }) {
 		fetchPokemon();
 	}, []);
 
+	function startNewRound() {
+		setClickedCards([]);
+
+		switch (gameDifficulty) {
+			case "easy":
+				setNumberOfCards((prev) => prev + 1);
+				break;
+			case "medium":
+				setNumberOfCards((prev) => prev + 2);
+				break;
+			case "hard":
+				setNumberOfCards((prev) => prev + 3);
+				break;
+			case "trainer":
+				setNumberOfCards(151);
+				break;
+		}
+		setRoundNumber(roundNumber + 1);
+	}
 	function handleCardClick(e) {
 		const { dexnum } = e.target.closest("div").dataset;
 
@@ -57,10 +81,13 @@ function Game({ currentScore, setCurrentScore, gameDifficulty }) {
 		} else {
 			setCurrentScore(0);
 			setClickedCards([]);
+			setNumberOfCards();
+			setRoundNumber(1);
 		}
 	}
 	return (
 		<main className=" bg-slate-800 p-8 grid gap-6 grid-cols-3 md:grid-cols-4  lg:grid-cols-6 place-content-center ">
+			{numberOfCards === clickedCards.length && startNewRound()}
 			{gameCards.map((pokemon) => (
 				<Card
 					key={pokemon.name}

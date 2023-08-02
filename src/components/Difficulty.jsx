@@ -1,18 +1,18 @@
 function Difficulty({ setGameDifficulty, setIsNewGame }) {
 	function startEasyGame() {
-		setGameDifficulty(0);
+		setGameDifficulty("easy");
 		setIsNewGame(false);
 	}
 	function startMediumGame() {
-		setGameDifficulty(1);
+		setGameDifficulty("medium");
 		setIsNewGame(false);
 	}
 	function startHardGame() {
-		setGameDifficulty(2);
+		setGameDifficulty("hard");
 		setIsNewGame(false);
 	}
 	function startVeryHardGame() {
-		setGameDifficulty(3);
+		setGameDifficulty("trainer");
 		setIsNewGame(false);
 	}
 	return (
