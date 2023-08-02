@@ -4,10 +4,11 @@ import Game from "./components/Game";
 import "./App.css";
 
 function App() {
+	const [currentScore, setCurrentScore] = useState(0);
 	return (
 		<>
-			<Header />
-			<Game />
+			<Header currentScore={currentScore} />
+			<Game setCurrentScore={setCurrentScore} />
 		</>
 	);
 }
