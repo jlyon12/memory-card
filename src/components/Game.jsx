@@ -89,18 +89,33 @@ function Game({
 		}
 	}
 	return (
-		<main className=" bg-slate-800 p-8 grid gap-6 grid-cols-fluid place-content-center ">
+		<main className=" bg-slate-800 flex flex-col p-8 ">
 			{numberOfCards === clickedCards.length && startNewRound()}
 			{currentScore >= highScore && setHighScore(currentScore)}
-			{gameCards.map((pokemon) => (
-				<Card
-					key={pokemon.name}
-					handleClick={handleCardClick}
-					name={pokemon.name}
-					dexNum={pokemon.dexNum}
-					imgURL={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.dexNum}.png`}
-				/>
-			))}
+			<div className="flex flex-col items-center gap-4 place-self-center text-white text-xl">
+				<p>
+					Round: <span className="font-bold">{roundNumber}</span>
+				</p>
+				<div className="flex gap-4">
+					<p>
+						Current Score: <span className="font-bold">{currentScore}</span>
+					</p>
+					<p>
+						High Score: <span className="font-bold">{highScore}</span>
+					</p>
+				</div>
+			</div>
+			<section className="p-8 grid gap-6 grid-cols-fluid place-content-center my-auto ">
+				{gameCards.map((pokemon) => (
+					<Card
+						key={pokemon.name}
+						handleClick={handleCardClick}
+						name={pokemon.name}
+						dexNum={pokemon.dexNum}
+						imgURL={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.dexNum}.png`}
+					/>
+				))}
+			</section>
 		</main>
 	);
 }
