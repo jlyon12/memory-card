@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
 
-function Game({ setCurrentScore }) {
+function Game({ currentScore, setCurrentScore }) {
 	const [allPokemon, setAllPokemon] = useState([]);
 	const [gameCards, setGameCards] = useState([]);
 	const numberOfCards = 10;
@@ -38,6 +38,8 @@ function Game({ setCurrentScore }) {
 		if (!clickedCards.includes(Number(dexnum))) {
 			setClickedCards([...clickedCards, Number(dexnum)]);
 			setCurrentScore((currentScore) => currentScore + 1);
+			const shuffledCards = [...gameCards];
+			setGameCards(shuffledCards.sort(() => Math.random() > 0.5, -1, +1));
 		} else {
 			setCurrentScore(0);
 			setClickedCards([]);

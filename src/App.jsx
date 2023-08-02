@@ -8,7 +8,7 @@ function App() {
 	return (
 		<>
 			<Header currentScore={currentScore} />
-			<Game setCurrentScore={setCurrentScore} />
+			<Game currentScore={currentScore} setCurrentScore={setCurrentScore} />
 		</>
 	);
 }
