@@ -1,4 +1,4 @@
-function Header({ currentScore, roundNumber, gameDifficulty }) {
+function Header({ currentScore, highScore, roundNumber, gameDifficulty }) {
 	return (
 		<header className="flex justify-between items-center bg-gray-900 text-white p-4">
 			<h1 className="font-bold text-xl">Memory Game</h1>
@@ -20,7 +20,7 @@ function Header({ currentScore, roundNumber, gameDifficulty }) {
 					</p>
 				)}
 				<p>
-					High Score: <span className="font-bold">10</span>
+					High Score: <span className="font-bold">{highScore}</span>
 				</p>
 			</div>
 		</header>

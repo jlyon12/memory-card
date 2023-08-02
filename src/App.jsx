@@ -6,6 +6,7 @@ import "./App.css";
 
 function App() {
 	const [currentScore, setCurrentScore] = useState(0);
+	const [highScore, setHighScore] = useState(0);
 	const [isNewGame, setIsNewGame] = useState(true);
 	const [gameDifficulty, setGameDifficulty] = useState();
 	const [roundNumber, setRoundNumber] = useState(1);
@@ -13,6 +14,7 @@ function App() {
 		<>
 			<Header
 				currentScore={currentScore}
+				highScore={highScore}
 				roundNumber={roundNumber}
 				gameDifficulty={gameDifficulty}
 			/>
@@ -25,6 +27,8 @@ function App() {
 				<Game
 					currentScore={currentScore}
 					setCurrentScore={setCurrentScore}
+					highScore={highScore}
+					setHighScore={setHighScore}
 					gameDifficulty={gameDifficulty}
 					roundNumber={roundNumber}
 					setRoundNumber={setRoundNumber}
