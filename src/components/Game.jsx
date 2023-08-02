@@ -1,19 +1,33 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
 
-function Game({ currentScore, setCurrentScore }) {
+function Game({ currentScore, setCurrentScore, gameDifficulty }) {
 	const [allPokemon, setAllPokemon] = useState([]);
 	const [gameCards, setGameCards] = useState([]);
-	const numberOfCards = 10;
+	const [numberOfCards, setNumberOfCards] = useState(); //
 
 	const [clickedCards, setClickedCards] = useState([]);
 	useEffect(() => {
+		switch (gameDifficulty) {
+			case 0:
+				setNumberOfCards(4);
+				break;
+			case 1:
+				setNumberOfCards(8);
+				break;
+			case 2:
+				setNumberOfCards(12);
+				break;
+			case 3:
+				setNumberOfCards(151);
+				break;
+		}
 		setGameCards(
 			[...allPokemon]
 				.sort(() => Math.random() > 0.5, -1, +1)
 				.slice(0, numberOfCards)
 		);
-	}, [allPokemon]);
+	}, [allPokemon, gameDifficulty, numberOfCards]);
 
 	useEffect(() => {
 		async function fetchPokemon() {
