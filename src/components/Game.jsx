@@ -89,7 +89,7 @@ function Game({
 		}
 	}
 	return (
-		<main className=" bg-slate-800 p-8 grid gap-6 grid-cols-3 md:grid-cols-4  lg:grid-cols-6 place-content-center ">
+		<main className=" bg-slate-800 p-8 grid gap-6 grid-cols-fluid place-content-center ">
 			{numberOfCards === clickedCards.length && startNewRound()}
 			{currentScore >= highScore && setHighScore(currentScore)}
 			{gameCards.map((pokemon) => (
