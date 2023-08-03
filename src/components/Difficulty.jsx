@@ -21,28 +21,28 @@ function Difficulty({ setGameDifficulty, setIsNewGame }) {
 				<h2 className="font-bold text-lg">Select Difficulty</h2>
 				<div className="flex justify-between gap-4">
 					<button
-						className="px-2 py-1 border-2 border-slate-400 bg-slate-500 rounded-md hover:bg-slate-700"
+						className="btn hover:btn-hover"
 						type="button"
 						onClick={startEasyGame}
 					>
 						Easy
 					</button>
 					<button
-						className="px-2 py-1 border-2 border-slate-400 bg-slate-500 rounded-md hover:bg-slate-700"
+						className="btn hover:btn-hover"
 						type="button"
 						onClick={startMediumGame}
 					>
 						Medium
 					</button>
 					<button
-						className="px-2 py-1 border-2 border-slate-400 bg-slate-500 rounded-md hover:bg-slate-700"
+						className="btn hover:btn-hover"
 						type="button"
 						onClick={startHardGame}
 					>
 						Hard
 					</button>
 					<button
-						className="px-2 py-1 border-2 border-slate-400 bg-slate-500 rounded-md hover:bg-slate-700"
+						className="btn hover:bg-red-500"
 						type="button"
 						onClick={startVeryHardGame}
 					>

@@ -6,14 +6,14 @@ function GameOver({ setIsNewGame, setIsGameOver, currentScore }) {
 				<p>Your score was {currentScore}</p>
 				<div className="flex justify-between gap-4">
 					<button
-						className="px-2 py-1 border-2 border-slate-400 bg-slate-500 rounded-md hover:bg-slate-700"
+						className="btn hover:btn-hover"
 						type="button"
 						onClick={() => setIsNewGame(true)}
 					>
 						Change Difficulty
 					</button>
 					<button
-						className="px-2 py-1 border-2 border-slate-400 bg-slate-500 rounded-md hover:bg-slate-700"
+						className="btn hover:btn-hover"
 						type="button"
 						onClick={() => setIsGameOver(false)}
 					>
