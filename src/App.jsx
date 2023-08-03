@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Difficulty from "./components/Difficulty";
 import Game from "./components/Game";
 import "./App.css";
@@ -37,6 +38,7 @@ function App() {
 					/>
 				)}
 			</main>
+			<Footer />
 		</>
 	);
 }
