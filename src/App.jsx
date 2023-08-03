@@ -18,22 +18,25 @@ function App() {
 				roundNumber={roundNumber}
 				gameDifficulty={gameDifficulty}
 			/>
-			{isNewGame ? (
-				<Difficulty
-					setGameDifficulty={setGameDifficulty}
-					setIsNewGame={setIsNewGame}
-				/>
-			) : (
-				<Game
-					currentScore={currentScore}
-					setCurrentScore={setCurrentScore}
-					highScore={highScore}
-					setHighScore={setHighScore}
-					gameDifficulty={gameDifficulty}
-					roundNumber={roundNumber}
-					setRoundNumber={setRoundNumber}
-				/>
-			)}
+			<main>
+				{isNewGame ? (
+					<Difficulty
+						setGameDifficulty={setGameDifficulty}
+						setIsNewGame={setIsNewGame}
+					/>
+				) : (
+					<Game
+						currentScore={currentScore}
+						setCurrentScore={setCurrentScore}
+						highScore={highScore}
+						setHighScore={setHighScore}
+						gameDifficulty={gameDifficulty}
+						roundNumber={roundNumber}
+						setRoundNumber={setRoundNumber}
+						setIsNewGame={setIsNewGame}
+					/>
+				)}
+			</main>
 		</>
 	);
 }

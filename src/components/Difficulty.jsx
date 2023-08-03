@@ -16,7 +16,7 @@ function Difficulty({ setGameDifficulty, setIsNewGame }) {
 		setIsNewGame(false);
 	}
 	return (
-		<main className=" bg-slate-800 grid place-content-center">
+		<section className="min-h-full bg-slate-800 grid place-content-center">
 			<div className="p-4 gap-8 flex flex-col justify-between items-center border-2 bg-slate-600 text-white rounded-lg shadow ">
 				<h2 className="font-bold text-lg">Select Difficulty</h2>
 				<div className="flex justify-between gap-4">
@@ -50,7 +50,7 @@ function Difficulty({ setGameDifficulty, setIsNewGame }) {
 					</button>
 				</div>
 			</div>
-		</main>
+		</section>
 	);
 }
 

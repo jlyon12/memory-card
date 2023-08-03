@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
-
+import GameOver from "./GameOver";
 function Game({
 	currentScore,
 	setCurrentScore,
@@ -9,11 +9,24 @@ function Game({
 	gameDifficulty,
 	roundNumber,
 	setRoundNumber,
+	setIsNewGame,
 }) {
 	const [allPokemon, setAllPokemon] = useState([]);
 	const [gameCards, setGameCards] = useState([]);
 	const [numberOfCards, setNumberOfCards] = useState(); //
 	const [clickedCards, setClickedCards] = useState([]);
+	const [isGameOver, setIsGameOver] = useState(false);
+	const [finalScore, setFinalScore] = useState();
+
+	const gameCardElements = gameCards.map((pokemon) => (
+		<Card
+			key={pokemon.name}
+			handleClick={handleCardClick}
+			name={pokemon.name}
+			dexNum={pokemon.dexNum}
+			imgURL={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.dexNum}.png`}
+		/>
+	));
 
 	useEffect(() => {
 		switch (gameDifficulty) {
@@ -82,14 +95,16 @@ function Game({
 			const shuffledCards = [...gameCards];
 			setGameCards(shuffledCards.sort(() => Math.random() > 0.5, -1, +1));
 		} else {
-			setCurrentScore(0);
+			setFinalScore(currentScore);
+			setIsGameOver(true);
 			setClickedCards([]);
 			setNumberOfCards();
 			setRoundNumber(1);
+			setCurrentScore(0);
 		}
 	}
 	return (
-		<main className=" bg-slate-800 flex flex-col p-8 ">
+		<section className="min-h-full bg-slate-800 flex flex-col p-8 ">
 			{numberOfCards === clickedCards.length && startNewRound()}
 			{currentScore >= highScore && setHighScore(currentScore)}
 			<div className="flex flex-col items-center gap-4 place-self-center text-white text-xl">
@@ -105,18 +120,19 @@ function Game({
 					</p>
 				</div>
 			</div>
-			<section className="p-8 grid gap-6 grid-cols-fluid place-content-center my-auto ">
-				{gameCards.map((pokemon) => (
-					<Card
-						key={pokemon.name}
-						handleClick={handleCardClick}
-						name={pokemon.name}
-						dexNum={pokemon.dexNum}
-						imgURL={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.dexNum}.png`}
+
+			<div className="p-8 grid gap-6 grid-cols-fluid place-content-center my-auto ">
+				{!isGameOver ? (
+					gameCardElements
+				) : (
+					<GameOver
+						setIsGameOver={setIsGameOver}
+						setIsNewGame={setIsNewGame}
+						currentScore={finalScore}
 					/>
-				))}
-			</section>
-		</main>
+				)}
+			</div>
+		</section>
 	);
 }
 export default Game;
